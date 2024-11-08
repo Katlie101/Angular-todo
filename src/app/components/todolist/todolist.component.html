@@ -1,0 +1,34 @@
+
+    <h1>What do we need to complete today?</h1>
+<form [formGroup]="toDoForm">
+    <div>
+        <label for="toDoItem">Add your todo item below!</label>
+        <br>
+        <input id="toDoItem" type="text"  formControlName="toDoItem">
+        
+        <button type="button" (click)="addTodo(toDoForm.get('toDoItem')?.value)">Add</button>
+    </div>
+    <div *ngIf="toDoForm.get('toDoItem')?.touched && toDoForm.get('toDoItem')?.invalid">
+        <small *ngIf="toDoForm.get('toDoItem')?.errors?.['required']">Todo required!</small>
+        <p *ngIf="toDoForm.get('toDoItem')?.errors?.['minlength']">More than one letter please!</p>
+    </div> 
+    <div>
+        <label for="date">When do you expect to complete the todo?</label>
+        <br>
+        <input id="date" type="date" formControlName="setDate"/>
+        <button type="button">Add</button>
+    </div>
+
+   
+        
+</form>        
+<div *ngFor="let t of todos" >
+    <p>{{t}}
+
+
+        <button type="button" (click)="removeTodo(t)">Remove</button>
+    </p>
+
+</div>
+<button (click)="logout()">See you later! Bye</button>
+
