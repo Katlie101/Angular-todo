@@ -21,6 +21,8 @@ export class AppComponent {
   form = new FormGroup ({
     toDoItem: new FormControl ('')
   });
+
+  
   
   logValue() {
     console.log(this.form.get('toDoItem')?.value);

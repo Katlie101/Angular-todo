@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 
 export class TodolistComponent {
   toDoForm!: FormGroup
+  setDate= new Date();
 
   todos: string[]=["Grab coffee", "Take a shower", "Meet up with the rents", "Pay overdue fees"]
   
@@ -26,8 +27,11 @@ export class TodolistComponent {
 
   constructor(private formBuilder: FormBuilder, private authService:AuthService, private router:Router) { 
     this.toDoForm=this.formBuilder.group({
-      toDoItem: new FormControl('',[Validators.required, Validators.minLength(2)])
-    }) 
+      toDoItem: new FormControl('',[Validators.required, Validators.minLength(2)]),
+      setDate: new FormControl(this.setDate.toDateString())
+    })
+     
+
   }
 
   addTodo(todo:string) {
@@ -42,6 +46,12 @@ export class TodolistComponent {
     this.authService.logout()
     this.router.navigate(['/login'])
   }
+  
+  onSubmit(){
+    this.toDoForm.value
+  }
+
+  
 
 
 

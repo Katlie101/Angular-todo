@@ -1,5 +1,15 @@
+
 .loginform {
-    margin: 250px;
+    margin: 200px;
     padding-left: 150px;
 
+}
+
+.userlog, .userpass {
+    margin: 30px;
+    padding-left: 100px;
+}
+
+input {
+    font-size: 20px;
 }

@@ -1,34 +1,56 @@
 
     <h1>What do we need to complete today?</h1>
-<form [formGroup]="toDoForm">
+<form [formGroup]="toDoForm" (ngSubmit)="onSubmit()" >
     <div>
         <label for="toDoItem">Add your todo item below!</label>
         <br>
         <input id="toDoItem" type="text"  formControlName="toDoItem">
-        
-        <button type="button" (click)="addTodo(toDoForm.get('toDoItem')?.value)">Add</button>
+        <br>
+        <div>
+            <label for="date">When do you expect to complete the todo?</label>
+            <br>   
+        <input id="date" type="date" formControlName="setDate"/> 
+        </div>
+
+        <select name="priority" id="priority">
+            <option value="highpriority">High Alert</option>
+            <option value="mediumpriority">Halfway Through</option>
+            <option value="highpriority">10% Left</option>
+        </select>
+        <button type="submit" (click)="addTodo(toDoForm.get('toDoItem')?.value)" >Add</button>
     </div>
     <div *ngIf="toDoForm.get('toDoItem')?.touched && toDoForm.get('toDoItem')?.invalid">
         <small *ngIf="toDoForm.get('toDoItem')?.errors?.['required']">Todo required!</small>
         <p *ngIf="toDoForm.get('toDoItem')?.errors?.['minlength']">More than one letter please!</p>
     </div> 
-    <div>
-        <label for="date">When do you expect to complete the todo?</label>
-        <br>
-        <input id="date" type="date" formControlName="setDate"/>
-        <button type="button">Add</button>
-    </div>
+   
 
    
         
 </form>        
-<div *ngFor="let t of todos" >
-    <p>{{t}}
+<div *ngFor="let t of todos" class="displaytodo" >
+    <p> {{t}} Complete by {{toDoForm.get('setDate')?.value}}
 
 
         <button type="button" (click)="removeTodo(t)">Remove</button>
     </p>
 
+</div>
+<div class="priorities">
+    <div class="high">
+        <h2>High Priority</h2>
+    </div>
+   
+    <div class="medium">
+        <h2>Medium Priority</h2>
+    </div>
+    
+    <div class="low">
+        <h2>Low priority</h2>
+    </div>
+</div>
+<div class="completed">
+    <h2>It is done!</h2>
 </div>
 <button (click)="logout()">See you later! Bye</button>
 

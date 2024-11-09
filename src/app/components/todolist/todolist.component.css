@@ -1,0 +1,28 @@
+.priorities {
+    display: flex;
+    
+}
+
+
+.high, .medium, .low {
+    background-color: darkorchid;
+    width: 500px;
+    margin-left: 20px;   
+}
+
+.high {
+    background-color: red;
+}
+
+.medium {
+    background-color: orange;
+}
+
+.low {
+    background-color: yellowgreen;
+}
+
+.completed {
+    background-color: green;
+    width: auto;
+}
