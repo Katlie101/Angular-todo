@@ -2,6 +2,7 @@ import { Component, NgModule,  } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -9,22 +10,14 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TodolistComponent, ReactiveFormsModule],
+  imports: [RouterOutlet, ReactiveFormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 
-
 export class AppComponent {
 
-  form = new FormGroup ({
-    toDoItem: new FormControl ('')
-  });
+task!:string
 
-  
-  
-  logValue() {
-    console.log(this.form.get('toDoItem')?.value);
-  }  
 }

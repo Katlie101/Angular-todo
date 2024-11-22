@@ -14,13 +14,10 @@ export class AuthService {
 
   login(username:string,password:string){
     localStorage.setItem('authToken',username)
-
   }
 
   logout(){
     localStorage.removeItem('authToken')
-
   }
-
   
 }

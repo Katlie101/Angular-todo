@@ -1,20 +1,17 @@
-<form>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1>Register Here!</h1>
     <div>
-        <h1>Register Here!</h1>
-        <label>Name and Surname</label>
-        <br>
-        <input>
+        <label>Full Name</label>
+        <input id="fullname" type="text" formControlName="fullName">
         <br>
         <label>Email Address </label>
-        <br>
-        <input>
+        <input id="email" type="text" formControlName="emailAddress">
         <br>
         <label>Password</label>
-        <br>
-        <input>
+        <input id="pass" type="text" formControlName="password">
         <br>
         <br>
         <button routerLink="/todolist"> Signup </button>
-        <button routerLink="/login"> No need. Let's login</button>     
+        <button type="submit" routerLink="/login"> No need. Let's login</button>     
     </div>
 </form>
